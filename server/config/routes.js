@@ -27,7 +27,7 @@ module.exports = function (app) {
     app.post('/login', auth.authenticate);
 
     app.post('/logout', function(req, res){
-        console.log("Logging out", req, " WWWWWWWWWWWWWW", req.logout);
+        console.log("Logging out", req, " Out...", req.logout);
         req.logout();
         res.end();
     });
@@ -36,8 +36,13 @@ module.exports = function (app) {
         res.send(404);
     });
 
+    // FACEBOOK auth
+    app.get('/auth/facebook', auth.authenticateFacebook);
+    // handle the callback 
+    app.get('/auth/facebook/callback', auth.authenticateFacebookCallback);
+
     app.get('*', function (req, res) {
-        console.log("Not service all, rendering index");
+        console.log("Not service call, rendering index");
         res.render('index', {
             bootstrappedUser: req.user
         });

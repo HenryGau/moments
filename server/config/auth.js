@@ -42,3 +42,16 @@ exports.requiresRole = function(role) {
         }
     }
 }
+
+exports.authenticateFacebook = function(req, res, next) {
+    var auth = passport.authenticate('facebook', {scope : 'email'});
+    auth(req, res, next);
+}
+
+exports.authenticateFacebookCallback = function(req, res, next) {
+    var auth = passport.authenticate('facebook', {
+        successRedirect : '/',
+        failureRedirect : '/'
+    });
+    auth(req, res, next);
+}

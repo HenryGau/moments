@@ -39,6 +39,10 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             templateUrl: '/partials/courses/course-list',
             controller: 'mvCourseListCtrl'
         })
+        .when('/_=_',{
+            //Fail to auth with Facebook callback
+            redirectTo : '/signup'
+        })
     ;
 });
 

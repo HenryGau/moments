@@ -32,6 +32,9 @@ var User = mongoose.model('User', userSchema);
 
 
 function createDefaultUsers() {
+    //Remove this logic for now
+    return 0;
+
     User.find({}).exec(function (err, collection) {
         if (collection.length === 0) {
             var salt, hash;
